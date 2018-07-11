@@ -24,4 +24,18 @@ class Artist
     return artists.map { |artists_hash| Artist.new(artists_hash) }
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM artists WHERE id = $1"
+    values = [id]
+    artists = SQLRunner.run(sql, values)
+    artist_hash = artists.first
+    return Artist.new(artist_hash)
+  end
+
+  def update
+    sql = "UPDATE artists SET name = $1 WHERE id = $2"
+    values = [@name, @id]
+    SQLRunner.run(sql, values)
+  end
+
 end

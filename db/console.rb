@@ -2,6 +2,8 @@ require("pry-byebug")
 require_relative("../models/album")
 require_relative("../models/artist")
 
-album1 = Album.find(2)
+album = Album.find(1)
 
-p album1.artist
+album.title = 'And Justice For All'
+
+album.update()
