@@ -1,5 +1,6 @@
 require('pg')
 require_relative('../db/sqlrunner')
+require_relative('album')
 class Artist
   attr_accessor :name
   attr_reader :id
@@ -22,5 +23,8 @@ class Artist
     artists = SQLRunner.run(sql)
     return artists.map { |artists_hash| Artist.new(artists_hash) }
   end
+
+  
+
 
 end
